@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote - Voting App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome, {{ username }}! Cast your vote:</h1>
+            <form action="/logout" method="POST">
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
+        </div>
+        <form id="vote-form" class="vote-options">
+            <label class="vote-option">
+                <input type="radio" name="option" value="BJP" required>
+                <img src="{{ url_for('static', filename='images/bjp-removebg-preview.png') }}" alt="BJP Logo">
+                <span>BJP</span>
+            </label>
+            <label class="vote-option">
+                <input type="radio" name="option" value="RJD">
+                <img src="{{ url_for('static', filename='images/rjd-removebg-preview.png') }}" alt="RJD Logo">
+                <span>RJD</span>
+            </label>
+            <label class="vote-option">
+                <input type="radio" name="option" value="Congress">
+                <img src="{{ url_for('static', filename='images/congress-removebg-preview.png') }}" alt="Congress Logo">
+                <span>Congress</span>
+            </label>
+            <button type="submit" class="vote-btn">Vote</button>
+        </form>
+        <p id="message"></p>
+        <p><a href="/results">View Results</a></p>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='js/vote.js') }}"></script>
+</body>
+</html>

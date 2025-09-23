@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Voting App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Live Voting Results</h1>
+            <form action="/logout" method="POST">
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
+        </div>
+        <div id="results-display">
+            <div class="result-item" id="bjp-result" data-party="BJP">
+                <img src="{{ url_for('static', filename='images/bjp-removebg-preview.png') }}" alt="BJP Logo">
+                <p>BJP: <span id="bjp-count">0</span></p>
+            </div>
+            <div class="result-item" id="rjd-result" data-party="RJD">
+                <img src="{{ url_for('static', filename='images/rjd-removebg-preview.png') }}" alt="RJD Logo">
+                <p>RJD: <span id="rjd-count">0</span></p>
+            </div>
+            <div class="result-item" id="congress-result" data-party="Congress">
+                <img src="{{ url_for('static', filename='images/congress-removebg-preview.png') }}" alt="Congress Logo">
+                <p>Congress: <span id="congress-count">0</span></p>
+            </div>
+        </div>
+        <p><a href="/vote">Back to Voting</a></p>
+        <button id="view-details-btn" class="vote-btn">View Detailed Votes</button>
+                <div id="detailed-votes" style="display:none;">
+            <h2>Detailed Votes</h2>
+            <div class="table-container">
+                <table id="vote-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Party Name</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Detailed votes will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button id="reset-votes-btn" class="reset-btn">Reset All Votes</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='js/results.js') }}"></script>
+</body>
+</html>
