@@ -15,9 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Congress': document.getElementById('congress-result'),
     };
 
-    let selectedPartyForDetails = null; // To store which party's details to show
-
-    
+    let selectedPartyForDetails = null;
 
     // Add click listeners to result items
     for (const party in resultItems) {
@@ -177,6 +175,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Auto-refresh results every 5 seconds
-    setInterval(fetchResults, 5000);
+
 });
