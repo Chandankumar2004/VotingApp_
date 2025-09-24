@@ -9,7 +9,7 @@ load_dotenv()
 
 app = Flask(__name__, static_folder='../frontend/static', template_folder='../frontend')
 app.config['SECRET_KEY'] = 'dev-secret-key'
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:////app/votes.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///votes.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -33,8 +33,10 @@ def init_db():
 
 @app.before_request
 def before_request():
-    if 'session_id' not in session and request.endpoint not in ['login', 'static']:
-        if request.path != url_for('login_page'):
+    if request.endpoint in ['health']:
+        return
+    if 'session_id' not in session and request.endpoint not in ['login', 'static', 'login_page']:
+        if request.path not in ['/', '/health']:
             return redirect(url_for('login_page'))
 
 @app.route('/')
