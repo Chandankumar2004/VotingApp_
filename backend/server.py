@@ -9,7 +9,7 @@ load_dotenv()
 
 app = Flask(__name__, static_folder='../frontend/static', template_folder='../frontend')
 app.config['SECRET_KEY'] = 'dev-secret-key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///votes.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:////app/votes.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -135,4 +135,4 @@ def handle_disconnect():
 if __name__ == '__main__':
     init_db()
     port = int(os.environ.get('PORT', 5000))
-    socketio.run(app, debug=True, host='0.0.0.0', port=port)
+    socketio.run(app, debug=False, host='0.0.0.0', port=port)
