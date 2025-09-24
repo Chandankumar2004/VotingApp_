@@ -2,11 +2,11 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY simple_requirements.txt requirements.txt
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY simple_app.py app.py
+COPY . .
 
 EXPOSE 5000
 
-CMD ["python", "app.py"]
+CMD ["python", "backend/server.py"]

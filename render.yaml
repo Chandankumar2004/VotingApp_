@@ -1,7 +1,0 @@
-services:
-  - type: web
-    name: voting-app
-    env: docker
-    dockerfilePath: ./Dockerfile
-    plan: free
-    healthCheckPath: /health
