@@ -1,0 +1,19 @@
+# Commands to upload project to GitHub
+
+# 1. Initialize git repository
+git init
+
+# 2. Add all files
+git add .
+
+# 3. Commit files
+git commit -m "Initial commit: VotingApp with Flask, SocketIO & SQLite"
+
+# 4. Add remote repository
+git remote add origin https://github.com/Chandankumar2004/VotingApp_.git
+
+# 5. Push to GitHub
+git push -u origin main
+
+# Note: Make sure you have created the repository on GitHub first
+# and have proper authentication set up (GitHub token or SSH key)

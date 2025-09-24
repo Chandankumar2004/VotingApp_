@@ -1,4 +1,4 @@
-# 🗳️ VotingApp_Python
+# 🗳️ VotingApp
 
 _A Real-Time Online Voting Application built with Flask, SocketIO & SQLite_
 
@@ -54,15 +54,15 @@ _A Real-Time Online Voting Application built with Flask, SocketIO & SQLite_
 
 ```bash
 # 1️⃣ Clone the repository
-git clone <repository_url>
-cd VotingApp_Python
+git clone https://github.com/Chandankumar2004/VotingApp_.git
+cd VotingApp_
 
 # 2️⃣ Create & activate a virtual environment
-python -m venv backend/venv
+python -m venv venv
 # On Windows:
-.ackendenv\Scriptsctivate
+venv\Scripts\activate
 # On macOS/Linux:
-# source backend/venv/bin/activate
+# source venv/bin/activate
 
 # 3️⃣ Install dependencies
 pip install -r requirements.txt
@@ -86,9 +86,9 @@ Open your browser and navigate to 👉 `http://127.0.0.1:5000/`
 > ### 1️⃣ Login Page
 >
 > 📝 **Action:** Enter a username to log in.  
-> 🔄 **Already Voted?** You’ll be redirected to the results page.
+> 🔄 **Already Voted?** You'll be redirected to the results page.
 >
-> ![Login Page](https://github.com/Chandankumar2004/VotingApp_Python/blob/f6bd7e5a9024b5810a699fdf6ceedc0d76d16dc9/login.png)
+> ![Login Page](https://github.com/Chandankumar2004/VotingApp_/blob/main/screenshots/login.png)
 
 ---
 
@@ -96,7 +96,7 @@ Open your browser and navigate to 👉 `http://127.0.0.1:5000/`
 >
 > 📝 **Action:** Cast your vote for one of the available parties.
 >
-> ![Vote Page](https://github.com/Chandankumar2004/VotingApp_Python/blob/f6bd7e5a9024b5810a699fdf6ceedc0d76d16dc9/vote.png)
+> ![Vote Page](https://github.com/Chandankumar2004/VotingApp_/blob/main/screenshots/vote.png)
 
 ---
 
@@ -105,28 +105,28 @@ Open your browser and navigate to 👉 `http://127.0.0.1:5000/`
 > 📝 **View:** Live voting results.  
 > 🏆 **Highlight:** The party with the most votes automatically appears at the top.
 >
-> ![Results Page](https://github.com/Chandankumar2004/VotingApp_Python/blob/f6bd7e5a9024b5810a699fdf6ceedc0d76d16dc9/result.png)
+> ![Results Page](https://github.com/Chandankumar2004/VotingApp_/blob/main/screenshots/result.png)
 
 ---
 
 > ### 4️⃣ Detailed Votes
 >
-> 📝 **Action:** Click **“View Detailed Votes”** to see a table of individual votes  
+> 📝 **Action:** Click **"View Detailed Votes"** to see a table of individual votes  
 > 👀 **Details shown:** Voter name, party, date & time.
 >
-> ![Detailed Votes](https://github.com/Chandankumar2004/VotingApp_Python/blob/f6bd7e5a9024b5810a699fdf6ceedc0d76d16dc9/vote_details.png)
+> ![Detailed Votes](https://github.com/Chandankumar2004/VotingApp_/blob/main/screenshots/vote_details.png)
 
 ---
 
 > ### 🔄 Admin Reset
 >
-> 📝 **Feature:** “Reset All Votes” button (visible by default) lets the admin clear all votes.  
+> 📝 **Feature:** "Reset All Votes" button (visible by default) lets the admin clear all votes.  
 > ⚠️ **Safety:** A confirmation prompt appears before resetting.
 
 ## 📂 Project Structure
 
 ```
-VotingApp_Python/
+VotingApp_/
 ├── README.md
 ├── server.py
 ├── requirements.txt
@@ -152,7 +152,7 @@ VotingApp_Python/
 
 ## 🤝 Contributing
 
-Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to change.
+Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
 
 ---
 
@@ -166,7 +166,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 
-## 👨‍💻 Author
+## 👨💻 Author
 
 **Chandan Kumar Chaurasiya**
 
