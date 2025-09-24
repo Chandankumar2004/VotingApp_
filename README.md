@@ -88,7 +88,7 @@ Open your browser and navigate to 👉 `http://127.0.0.1:5000/`
 > 📝 **Action:** Enter a username to log in.  
 > 🔄 **Already Voted?** You'll be redirected to the results page.
 >
-> ![Login Page](https://github.com/Chandankumar2004/VotingApp_/blob/main/screenshots/login.png)
+> ![Login Page](https://github.com/Chandankumar2004/VotingApp_/blob/90539b34c5e2c5bc852604eef59541980a74e00c/login.png)
 
 ---
 
@@ -96,7 +96,7 @@ Open your browser and navigate to 👉 `http://127.0.0.1:5000/`
 >
 > 📝 **Action:** Cast your vote for one of the available parties.
 >
-> ![Vote Page](https://github.com/Chandankumar2004/VotingApp_/blob/main/screenshots/vote.png)
+> ![Vote Page](https://github.com/Chandankumar2004/VotingApp_/blob/90539b34c5e2c5bc852604eef59541980a74e00c/vote.png)
 
 ---
 
@@ -105,7 +105,7 @@ Open your browser and navigate to 👉 `http://127.0.0.1:5000/`
 > 📝 **View:** Live voting results.  
 > 🏆 **Highlight:** The party with the most votes automatically appears at the top.
 >
-> ![Results Page](https://github.com/Chandankumar2004/VotingApp_/blob/main/screenshots/result.png)
+> ![Results Page](https://github.com/Chandankumar2004/VotingApp_/blob/90539b34c5e2c5bc852604eef59541980a74e00c/result.png)
 
 ---
 
@@ -114,7 +114,7 @@ Open your browser and navigate to 👉 `http://127.0.0.1:5000/`
 > 📝 **Action:** Click **"View Detailed Votes"** to see a table of individual votes  
 > 👀 **Details shown:** Voter name, party, date & time.
 >
-> ![Detailed Votes](https://github.com/Chandankumar2004/VotingApp_/blob/main/screenshots/vote_details.png)
+> ![Detailed Votes](https://github.com/Chandankumar2004/VotingApp_/blob/90539b34c5e2c5bc852604eef59541980a74e00c/vote_details.png)
 
 ---
 
