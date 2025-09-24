@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from flask_socketio import SocketIO, emit
 import os
-import uuid
 from datetime import datetime
 
 app = Flask(__name__, static_folder='frontend/static', template_folder='frontend')
@@ -10,6 +10,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///votes.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet')
 
 # Database Models
 class Vote(db.Model):
@@ -22,32 +23,24 @@ class Vote(db.Model):
     def __repr__(self):
         return f'<Vote {self.choice} by {self.username}>'
 
-# Initialize database
-def init_db():
-    with app.app_context():
-        db.create_all()
-
 @app.before_request
 def before_request():
-    if request.endpoint in ['health', 'static']:
-        return
-    if request.endpoint not in ['login_page', 'login'] and 'username' not in session:
-        return redirect(url_for('login_page'))
+    if 'session_id' not in session and request.endpoint not in ['login', 'static']:
+        if request.path != url_for('login_page'):
+            return redirect(url_for('login_page'))
 
 @app.route('/')
 def login_page():
     return render_template('login.html')
-
-@app.route('/health')
-def health():
-    return {'status': 'ok'}, 200
 
 @app.route('/login', methods=['POST'])
 def login():
     username = request.form['username']
     if username:
         session['username'] = username
-        session['session_id'] = str(uuid.uuid4())
+        if 'session_id' not in session:
+            import uuid
+            session['session_id'] = str(uuid.uuid4())
         existing_vote = Vote.query.filter_by(session_id=session['session_id']).first()
         if existing_vote:
             return redirect(url_for('results_page'))
@@ -69,7 +62,6 @@ def cast_vote():
     session_id = session['session_id']
     choice = request.form['option']
 
-    # Check if user has already voted in this session
     existing_vote = Vote.query.filter_by(session_id=session_id).first()
     if existing_vote:
         return jsonify({'success': False, 'message': 'You have already voted.'}), 400
@@ -77,6 +69,8 @@ def cast_vote():
     new_vote = Vote(session_id=session_id, username=username, choice=choice)
     db.session.add(new_vote)
     db.session.commit()
+
+    socketio.emit('vote_update', _get_results_data())
     return jsonify({'success': True, 'message': 'Vote cast successfully!'})
 
 @app.route('/results')
@@ -108,18 +102,27 @@ def reset_votes():
     try:
         num_deleted = Vote.query.delete()
         db.session.commit()
+        socketio.emit('vote_update', _get_results_data())
         return jsonify({'success': True, 'message': f'{num_deleted} votes reset successfully.'})
     except Exception as e:
         db.session.rollback()
         return jsonify({'success': False, 'message': str(e)}), 500
+
+@socketio.on('connect')
+def handle_connect():
+    print('Client connected')
+    emit('vote_update', _get_results_data())
 
 @app.route('/logout', methods=['POST'])
 def logout():
     session.clear()
     return redirect(url_for('login_page'))
 
+@socketio.on('disconnect')
+def handle_disconnect():
+    print('Client disconnected')
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    port = int(os.environ.get('PORT', 5000))
-    app.run(debug=False, host='0.0.0.0', port=port)
+    socketio.run(app, debug=True, port=5000)
