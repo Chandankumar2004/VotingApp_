@@ -33,9 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    socket.on('vote_update', (data) => {
-        updateResults(data);
-    });
+    // Auto-refresh results every 3 seconds
+    setInterval(fetchResults, 3000);
 
     // Initial fetch of results
     fetchResults();
