@@ -41,6 +41,10 @@ def before_request():
 def login_page():
     return render_template('login.html')
 
+@app.route('/health')
+def health():
+    return {'status': 'ok'}, 200
+
 @app.route('/login', methods=['POST'])
 def login():
     username = request.form['username']
